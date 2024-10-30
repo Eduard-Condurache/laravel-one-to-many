@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 // Models
 
 use App\Models\Project;
+use App\Models\Type;
 
 class ProjectSeeder extends Seeder
 {
@@ -17,12 +18,16 @@ class ProjectSeeder extends Seeder
     public function run(): void
     {
         Project::truncate();
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 10; $i++) {
+            
+            $randomType = Type::inRandomOrder()->first();
+
             Project::create([
                 'title' => fake()->company(),
                 'description' => fake()->sentence(5),
                 'image' => fake()->word(),
-                'category' => fake()->word(2, true)
+                'category' => fake()->word(2, true),
+                'type_id' => $randomType->id
 
             ]);
         }
