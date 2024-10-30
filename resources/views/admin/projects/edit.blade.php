@@ -84,8 +84,33 @@
                                 value="{{ old('category', $project->category) }}"
                                 minlength="2"
                                 maxlength="64" 
-                                placeholder="Inserisci il link del immagine">
+                                placeholder="Inserisci la categoria">
                           </div>
+
+                          <div class="mb-3">
+                            <label 
+                                for="type_id" 
+                                class="form-label">
+                                <span class="text-danger">*</span>
+                                Tipologia</label>
+                            <select 
+                                id="type_id" 
+                                name="type_id"
+                                class="form-select">
+                                <option
+                                    @if(old('type_id', $project->type_id) == null)
+                                        selected
+                                    @endif 
+                                    value="">Seleziona la tipologia</option>
+                                @foreach ($types as $type)
+                                    <option
+                                        @if(old('type_id', $project->type_id) == $type->id)
+                                            selected
+                                        @endif  
+                                        value="{{ $type->id }}">{{ $type->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
         
                           <div>
                             <button type="submit" class="btn btn-success">

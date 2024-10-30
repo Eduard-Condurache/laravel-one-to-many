@@ -20,7 +20,10 @@
                             Descrizione: {{ $project->description }}
                         </li>
                         <li>
-                            Tipo di progetto collegato: {{ $project->type->name }}
+                            Tipo di progetto collegato:
+                            <a href="{{ route('admin.types.show', ['type' => $project->type->id]) }}">
+                                 {{ $project->type->name }}
+                            </a>
                         </li>
                     </ul>
                 </div>
