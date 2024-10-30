@@ -5,15 +5,24 @@
 @section('main-content')
     <div class="row">
         <div class="col">
+            <h2>
+                Progetto
+            </h2>
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">
-                        Title: {{ $project->title }}
-                    </h5>
-                    <p>
-                        Description: {{ $project->description }}
-                    </p>
-                    <img src="{{ $project->image }}" alt="{{ $project->title }}">
+
+                    <h4>
+                        Titolo: {{ $project->title }}
+                    </h4>
+
+                    <ul>
+                        <li>
+                            Descrizione: {{ $project->description }}
+                        </li>
+                        <li>
+                            Tipo di progetto collegato: {{ $project->type->name }}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

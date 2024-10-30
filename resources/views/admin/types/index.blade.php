@@ -16,6 +16,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Descrizione</th>
+                    <th scope="col"># Tipologie collegate</th>
                     <th scope="col">VEDI</th>
                     <th scope="col">MODIFICA</th>
                     <th scope="col">ELIMINA</th>
@@ -27,6 +28,7 @@
                     <th scope="row">{{ $type->id }}</th>
                     <td>{{ $type->name }}</td>
                     <td>{{ $type->description }}</td>
+                    <td>{{ count($type->projects) }}</td>
                     <td>
                       <a href="{{ route('admin.types.show',['type' => $type->id]) }}" class="btn btn-primary">
                         VEDI

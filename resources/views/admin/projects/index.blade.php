@@ -16,6 +16,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Titolo</th>
                     <th scope="col">Categoria</th>
+                    <th scope="col">Tipologia Progetto</th>
                     <th scope="col">VEDI</th>
                     <th scope="col">MODIFICA</th>
                     <th scope="col">ELIMINA</th>
@@ -27,6 +28,15 @@
                     <th scope="row">{{ $project->id }}</th>
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->category }}</td>
+                    <td>
+                      @if ($project->type != null)
+                        <a href="{{ route('admin.types.show', ['type' => $project->type_id]) }}">
+                          {{ $project->type->name }}
+                        </a>
+                      @else
+                        -
+                      @endif    
+                    </td>
                     <td>
                       <a href="{{ route('admin.projects.show',['project' => $project->id]) }}" class="btn btn-primary">
                         VEDI

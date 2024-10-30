@@ -10,6 +10,9 @@
                     Types
                 </a>
             </div>
+            <h2>
+                Tipo di progetto
+            </h2>
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -24,6 +27,19 @@
                     <h6>
                         Alle:  {{ $type->created_at->format('H:i') }}
                     </h6>
+
+                    <h6>
+                        Progetti collegati:
+                    </h6>
+                    <ul>
+                        @foreach($type->projects as $project)
+                        <li>
+                            <a href="{{ route('admin.projects.show', ['project' => $project->id]) }}">
+                                {{ $project->title }}
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
