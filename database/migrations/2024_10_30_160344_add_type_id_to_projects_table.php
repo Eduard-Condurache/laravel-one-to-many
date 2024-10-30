@@ -15,7 +15,15 @@ return new class extends Migration
             $table->foreignId('type_id')
                     ->nullable()
                     ->after('id')
-                    ->constrained();
+                    ->constrained()
+                    /*
+                     Quando faccio l'update di un id di type, 
+                     l'update viene applicato anche a tutto i projects che fanno riferimento a type.
+                    */
+                    ->onUpdate('cascade')
+                    // Se una riga di di types viene eliminata il valore di type_id in projects viene impostato a null in questo caso(-)
+                    ->onDelete('set null');
+
         });
     }
 
